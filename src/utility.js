@@ -2,11 +2,10 @@ export const getTotal = (cart) => {
   let totalAmount = 0;
   let totalPrice = 0;
 
-  for (const { amount, price } of cart.values()) {
-    //iterate each object
+  cart.forEach(({ amount, price }) => {
     totalAmount += amount;
     totalPrice += amount * price;
-  }
+  });
 
   return { totalAmount, totalPrice };
 };

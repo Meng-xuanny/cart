@@ -2,9 +2,9 @@ import CartItem from "./CartItem";
 import { useGlobalContext } from "./AppContext";
 
 const CartContainer = () => {
-  const { clearCart, cart, totalPrice } = useGlobalContext();
+  const { clearCart, cart, totalPrice, dispatch } = useGlobalContext();
 
-  const cartArray = Array.from(cart.entries());
+  const cartArray = Object.entries(cart);
 
   if (cartArray.length === 0) {
     return (
@@ -38,7 +38,10 @@ const CartContainer = () => {
             total <span>${totalPrice.toFixed(2)}</span>
           </h5>
         </div>
-        <button className="btn btn-hipster" onClick={clearCart}>
+        <button
+          className="btn btn-hipster"
+          onClick={() => dispatch(clearCart())}
+        >
           clear cart
         </button>
       </footer>
